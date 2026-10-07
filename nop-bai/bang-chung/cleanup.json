@@ -1,0 +1,27 @@
+{
+  "requested_at_utc": "2026-10-07T18:26:01.063726+00:00",
+  "resource_group": "rg-income-lab",
+  "azure_deletion_requested": true,
+  "github_secrets_removed": [
+    "ARTIFACT_BUCKET",
+    "SERVER_HOST",
+    "SERVER_SSH_KEY",
+    "SERVER_USER",
+    "STORAGE_CREDENTIALS"
+  ],
+  "github_variables_removed": [
+    "SERVER_HOST_FINGERPRINT",
+    "SERVER_HOST_KEY"
+  ],
+  "workflow_state": "disabled_manually",
+  "local_lab_private_keys_removed": true,
+  "azure_connection_string_cleared": true,
+  "localhost_5000_listening": false,
+  "verified_at_utc": "2026-10-07T18:29:54.504997+00:00",
+  "azure_deletion_complete": true,
+  "resource_group_exists": false,
+  "remaining_azure_lab_resources": [],
+  "remaining_github_secret_names": [],
+  "remaining_github_variable_names": [],
+  "active_github_runs": []
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "/subscriptions/379e95a4-fc8c-4363-995d-26f70d2ca509/resourceGroups/rg-income-lab/providers/Microsoft.Network/publicIPAddresses/income-apiPublicIP",
+    "name": "income-apiPublicIP",
+    "type": "Microsoft.Network/publicIPAddresses"
+  },
+  {
+    "id": "/subscriptions/379e95a4-fc8c-4363-995d-26f70d2ca509/resourceGroups/rg-income-lab/providers/Microsoft.Network/networkSecurityGroups/income-apiNSG",
+    "name": "income-apiNSG",
+    "type": "Microsoft.Network/networkSecurityGroups"
+  },
+  {
+    "id": "/subscriptions/379e95a4-fc8c-4363-995d-26f70d2ca509/resourceGroups/rg-income-lab/providers/Microsoft.Network/virtualNetworks/income-apiVNET",
+    "name": "income-apiVNET",
+    "type": "Microsoft.Network/virtualNetworks"
+  },
+  {
+    "id": "/subscriptions/379e95a4-fc8c-4363-995d-26f70d2ca509/resourceGroups/rg-income-lab/providers/Microsoft.Network/networkInterfaces/income-apiVMNic",
+    "name": "income-apiVMNic",
+    "type": "Microsoft.Network/networkInterfaces"
+  },
+  {
+    "id": "/subscriptions/379e95a4-fc8c-4363-995d-26f70d2ca509/resourceGroups/rg-income-lab/providers/Microsoft.Compute/virtualMachines/income-api",
+    "name": "income-api",
+    "type": "Microsoft.Compute/virtualMachines"
+  },
+  {
+    "id": "/subscriptions/379e95a4-fc8c-4363-995d-26f70d2ca509/resourceGroups/RG-INCOME-LAB/providers/Microsoft.Compute/disks/income-api_OsDisk_1_fd288282ed4f4ea5ab8a9aa7e0350053",
+    "name": "income-api_OsDisk_1_fd288282ed4f4ea5ab8a9aa7e0350053",
+    "type": "Microsoft.Compute/disks"
+  },
+  {
+    "id": "/subscriptions/379e95a4-fc8c-4363-995d-26f70d2ca509/resourceGroups/rg-income-lab/providers/Microsoft.Storage/storageAccounts/stincometuyen261008",
+    "name": "stincometuyen261008",
+    "type": "Microsoft.Storage/storageAccounts"
+  }
+]

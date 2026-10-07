@@ -117,10 +117,10 @@ Tải file `outputs/report.json` từ artifacts của hai lần chạy để so 
 
 | Chỉ số | Bước 2 (22.361 mẫu) | Bước 3 (44.722 mẫu) |
 |---|---|---|
-| f1_score | ? | ? |
-| accuracy | ? | ? |
+| f1_score | 0.7149321267 | 0.7354260090 |
+| accuracy | 0.874 | 0.882 |
 
-Điền vào bảng trên dựa trên kết quả thực tế của bạn.
+Bảng đã điền bằng report CI thực tế ở `nop-bai/bang-chung/report-buoc-2.json` và `report-buoc-3.json`. Run dữ liệu mới dùng `workflow_dispatch`; trigger tự động từ push chưa được chứng minh.
 
 **Đừng giả định rằng thêm dữ liệu sẽ luôn làm mô hình tốt hơn.** Với bộ dữ liệu này, hai nửa dữ liệu được chia ngẫu nhiên từ cùng một nguồn, nên chúng có cùng phân phối. Gấp đôi dữ liệu trong tình huống đó thường chỉ làm chỉ số dao động trong khoảng nhỏ, thậm chí giảm nhẹ — mô hình đã học gần hết những gì có thể học từ 22.361 mẫu đầu tiên.
 

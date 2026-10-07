@@ -1,0 +1,12 @@
+{
+  "f1_score": 0.5906735751295337,
+  "accuracy": 0.842,
+  "params": {
+    "n_estimators": 50,
+    "learning_rate": 0.05,
+    "max_depth": 2
+  },
+  "train_rows": 44722,
+  "eval_rows": 500,
+  "run_id": "019911e712af400584452a894244b335"
+}

@@ -1,0 +1,10 @@
+{
+  "base_url": "http://20.212.210.172:8080",
+  "healthz": {
+    "status": "ok"
+  },
+  "score": {
+    "prediction": 1,
+    "label": "thu_nhap_cao"
+  }
+}

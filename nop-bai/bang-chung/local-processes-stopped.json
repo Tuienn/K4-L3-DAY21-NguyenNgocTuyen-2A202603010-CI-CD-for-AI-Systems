@@ -1,0 +1,6 @@
+{
+  "target": "repository MLflow UI",
+  "terminated": [],
+  "localhost_5000_listening": false,
+  "note": "No matching repository MLflow UI/worker remained; TCP 5000 was verified closed during cleanup."
+}

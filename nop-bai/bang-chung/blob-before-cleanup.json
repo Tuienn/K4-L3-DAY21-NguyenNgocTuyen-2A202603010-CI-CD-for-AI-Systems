@@ -1,0 +1,26 @@
+[
+  {
+    "name": "artifacts/current/model.joblib",
+    "size": 1172876
+  },
+  {
+    "name": "artifacts/current/report.json",
+    "size": 238
+  },
+  {
+    "name": "dvc/files/md5/4b/fed37f04ed80a7dc6e71236242867f",
+    "size": 563004
+  },
+  {
+    "name": "dvc/files/md5/77/c658508d27fcf6b04a6f30d8dc0eb1",
+    "size": 1126076
+  },
+  {
+    "name": "dvc/files/md5/cf/1eb2775d4c40a5f4dba7aadb8406d6",
+    "size": 12710
+  },
+  {
+    "name": "dvc/files/md5/f4/37f82d3a393cdc898e9fae8e7e07b0",
+    "size": 563191
+  }
+]

@@ -1,5 +1,7 @@
 # Nộp Bài - Day 21: CI/CD cho AI Systems
 
+Đây là **bản lưu tự học**, không phải hồ sơ đã nộp lên VLearn. Bằng chứng JSON từ CI và API được lưu trong `bang-chung/`; trạng thái từng checkpoint ở [CHECKPOINTS](../docs/CHECKPOINTS.md). Không tạo ảnh giả để thay cho ảnh chụp còn thiếu.
+
 Thư mục này là nơi chứa **bằng chứng nộp bài**. Bạn không cần tạo thêm thư mục nào khác:
 điền vào các file có sẵn và bỏ ảnh chụp màn hình vào đúng tên file đã quy định.
 
@@ -22,11 +24,11 @@ nop-bai/
 
 Đánh dấu `[x]` khi hoàn thành từng mục:
 
-- [ ] Repo GitHub ở chế độ **public** và chứa toàn bộ code, cấu hình đã hoàn thiện.
+- [x] Repo GitHub ở chế độ **public** và chứa toàn bộ code, cấu hình đã hoàn thiện.
 - [ ] Đủ 5 ảnh trong `anh-chup-man-hinh/`, đúng tên file, đúng thứ tự (xem
       [yêu cầu chi tiết](anh-chup-man-hinh/README.md)).
-- [ ] `bao-cao.md` đã điền đủ 3 mục bắt buộc và không vượt quá 1 trang A4.
-- [ ] Đã `git push` toàn bộ thư mục `nop-bai/` lên GitHub.
+- [x] `bao-cao.md` đã điền đủ 3 mục bắt buộc và không vượt quá 1 trang A4.
+- [x] Đã `git push` toàn bộ thư mục `nop-bai/` lên GitHub.
 - [ ] Dán URL repo GitHub vào bài nộp trên **https://vlearn.dev**.
 - [ ] Mở lại URL vừa nộp ở chế độ ẩn danh để chắc chắn repo public và người chấm xem được.
 

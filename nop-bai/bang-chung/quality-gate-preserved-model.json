@@ -1,0 +1,7 @@
+{
+  "run_id": 37665927030,
+  "quality_gate": "failure",
+  "release": "skipped",
+  "served_model_sha256": "1c8c0ecacca037f5372fee54c5172e7b311f1f56f28e2ddd8cdaf2eb76dce7ca",
+  "unchanged_after_rejected_candidate": true
+}

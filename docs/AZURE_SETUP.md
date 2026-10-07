@@ -1,5 +1,7 @@
 # Setup lab với Azure và Python 3.11
 
+> **Bản lưu tự học:** hạ tầng được thu hồi ngày 08/10/2026. Xem `CHECKPOINTS.md` và `../nop-bai/bang-chung/cleanup.json` để kiểm tra kết quả. VM/IP/Blob cũ không còn dùng được; SAS, SSH deployment key và Secrets triển khai đã được gỡ. Workflow CI/CD bị tắt để không tự triển khai lại. Các lệnh dưới đây là hướng dẫn tham khảo khi chủ động dựng một lab mới.
+
 Chạy lệnh từ thư mục gốc repository. Dùng venv hiện có; không tạo lại venv.
 
 ## 1. Môi trường cục bộ
@@ -110,22 +112,20 @@ Tham khảo API/credentials đã đối chiếu:
 [Azure Blob SDK](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-python-get-started),
 [DVC Azure remote](https://github.com/treeverse/dvc.org/blob/main/content/docs/user-guide/data-management/remote-storage/azure-blob-storage.md).
 
-## Trạng thái Azure đã tạo
+## Hạ tầng lịch sử trước khi thu hồi
 
 - Resource Group: `rg-income-lab`, region `southeastasia`.
 - VM: `income-api`, SKU `Standard_B2ats_v2`, 2 vCPU burstable, RAM 1 GiB.
 - Ubuntu 24.04, Python 3.11.16, Standard HDD 30 GiB, swap 1 GiB.
 - Public IP: `20.212.210.172`; SSH user: `azureuser`.
 - Storage Account: `stincometuyen261008`; container private: `income-lab`.
-- DVC đã push 3 dataset. Model seed lấy từ run MLflow cục bộ tốt nhất,
-  chưa phải kết quả của một workflow CI/CD trên GitHub.
-- Credential cục bộ ở `.env`, SSH key ở `.secrets/income_deploy`; các file này
-  được Git ignore. VM có SAS chỉ đọc, không có quyền ghi model hoặc dữ liệu.
-- SAS hết hạn sau 30 ngày; ngày cụ thể trong `docs/azure-resources.json`.
-- Đã cấu hình 5 GitHub Secrets và fingerprint SSH sau khi người dùng xác nhận.
-- NSG đã mở TCP 8080 public theo xác nhận; API: http://20.212.210.172:8080.
+- DVC đã push 3 dataset và phiên bản bổ sung batch2. Model seed ban đầu lấy từ MLflow cục bộ; sau đó CI/CD đã huấn luyện và triển khai lại thành công.
+- Credential từng ở `.env`, SSH key ở `.secrets/income_deploy`, được Git ignore. Khi thu hồi, connection string được xóa và thư mục key được gỡ; VM từng dùng SAS chỉ đọc.
+- SAS ban đầu có hạn 30 ngày; đã mất hiệu lực khi Storage Account bị xóa.
+- Năm GitHub Secrets và hai biến SSH từng được cấu hình; đã gỡ khi thu hồi.
+- NSG từng mở TCP 8080 public; endpoint lịch sử là `http://20.212.210.172:8080`, đã ngừng phục vụ.
 
-SSH vào VM:
+Lệnh SSH lịch sử (chỉ có hiệu lực sau khi dựng lại và thay IP/key):
 
 ```bash
 ssh -i .secrets/income_deploy -o UserKnownHostsFile=.secrets/known_hosts azureuser@20.212.210.172

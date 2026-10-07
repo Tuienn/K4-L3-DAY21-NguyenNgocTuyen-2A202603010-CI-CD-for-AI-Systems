@@ -9,11 +9,18 @@
   "vm_user": "azureuser",
   "credentials_expire_utc": "2026-11-06T17:46:22.966259+00:00",
   "initial_model_source": "local MLflow experiment, F1=0.7149321266968326",
-  "github_secrets_configured": true,
-  "api_status": "active; healthz and score verified via SSH",
-  "public_api_8080_open": true,
+  "github_secrets_configured": false,
+  "api_status": "stopped; resource group and all seven resources deleted",
+  "public_api_8080_open": false,
   "dvc_files_pushed": 3,
   "os_disk_gib": 30,
   "os_disk_sku": "Standard_LRS",
-  "security_type": "TrustedLaunch"
+  "security_type": "TrustedLaunch",
+  "lifecycle": "retired",
+  "workflow_state": "disabled_manually",
+  "local_deployment_private_key_removed": true,
+  "dvc_remote_available": false,
+  "metadata_is_historical": true,
+  "azure_deletion_complete": true,
+  "deleted_verified_at_utc": "2026-10-07T18:29:54.504997+00:00"
 }

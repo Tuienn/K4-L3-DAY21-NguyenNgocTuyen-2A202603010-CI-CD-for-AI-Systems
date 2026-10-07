@@ -4,6 +4,8 @@ Course: AIInAction - VinUni
 Buổi: Day 21 - CI/CD cho AI Systems
 Khoá: K4
 
+> **Bản lưu tự học ngày 08/10/2026.** Hạ tầng Azure đã được thu hồi và workflow triển khai đã bị tắt. Xem [trạng thái checkpoint](docs/CHECKPOINTS.md), [báo cáo](nop-bai/bao-cao.md) và [bằng chứng thực tế](nop-bai/bang-chung/). Các lệnh provisioning bên dưới chỉ dùng khi chủ động dựng lại lab.
+
 ---
 
 ## Mục Tiêu Học Tập
