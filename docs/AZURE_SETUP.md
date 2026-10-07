@@ -122,8 +122,8 @@ Tham khảo API/credentials đã đối chiếu:
 - Credential cục bộ ở `.env`, SSH key ở `.secrets/income_deploy`; các file này
   được Git ignore. VM có SAS chỉ đọc, không có quyền ghi model hoặc dữ liệu.
 - SAS hết hạn sau 30 ngày; ngày cụ thể trong `docs/azure-resources.json`.
-- GitHub Secrets chưa cấu hình vì cần xác nhận việc gửi SAS và private SSH key
-  tới repository. NSG chưa mở cổng 8080 ra Internet vì cần xác nhận phạm vi truy cập.
+- Đã cấu hình 5 GitHub Secrets và fingerprint SSH sau khi người dùng xác nhận.
+- NSG đã mở TCP 8080 public theo xác nhận; API: http://20.212.210.172:8080.
 
 SSH vào VM:
 

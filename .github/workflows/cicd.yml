@@ -127,38 +127,15 @@ jobs:
           path: outputs
       - name: Install Azure SDK
         run: pip install azure-storage-blob==12.19.1
-      - name: Copy serving code to Azure VM
-        uses: appleboy/scp-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          fingerprint: ${{ vars.SERVER_HOST_FINGERPRINT }}
-          source: src/serve.py,requirements-serve.txt
-          target: /home/${{ secrets.SERVER_USER }}/
-          overwrite: true
       - name: Publish accepted model to Azure
         env:
           AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.STORAGE_CREDENTIALS }}
           ARTIFACT_BUCKET: ${{ secrets.ARTIFACT_BUCKET }}
         run: python scripts/upload_model.py
       - name: SSH deploy to Azure VM
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          fingerprint: ${{ vars.SERVER_HOST_FINGERPRINT }}
-          script: |
-            set -eu
-            /home/azureuser/bootstrap/bin/uv pip install --python /home/azureuser/.venv/bin/python -r /home/azureuser/requirements-serve.txt
-            sudo -n systemctl restart income-api
-            for attempt in $(seq 1 30); do
-              if curl --fail --silent --show-error --max-time 3 http://127.0.0.1:8080/healthz; then
-                echo 'Health check passed'
-                exit 0
-              fi
-              sleep 2
-            done
-            echo 'Health check failed'
-            exit 1
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SERVER_HOST_KEY: ${{ vars.SERVER_HOST_KEY }}
+        run: bash scripts/deploy_vm.sh

@@ -28,6 +28,9 @@ def main():
     ).split()[1]
     subprocess.run(['gh', 'variable', 'set', 'SERVER_HOST_FINGERPRINT', '--repo', REPO],
                    input=fingerprint, text=True, check=True, stdout=subprocess.DEVNULL)
+    host_key = ' '.join(Path('.secrets/known_hosts').read_text().splitlines()[0].split()[1:3])
+    subprocess.run(['gh', 'variable', 'set', 'SERVER_HOST_KEY', '--repo', REPO],
+                   input=host_key, text=True, check=True, stdout=subprocess.DEVNULL)
     resources['github_secrets_configured'] = True
     Path('docs/azure-resources.json').write_text(json.dumps(resources, indent=2)+'\n')
     print('Configured 5 GitHub Secrets and SSH server fingerprint; no secret values printed.')
