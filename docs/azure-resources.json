@@ -1,0 +1,19 @@
+{
+  "resource_group": "rg-income-lab",
+  "storage_account": "stincometuyen261008",
+  "container": "income-lab",
+  "vm": "income-api",
+  "vm_size": "Standard_B2ats_v2",
+  "region": "southeastasia",
+  "vm_ip": "20.212.210.172",
+  "vm_user": "azureuser",
+  "credentials_expire_utc": "2026-11-06T17:46:22.966259+00:00",
+  "initial_model_source": "local MLflow experiment, F1=0.7149321266968326",
+  "github_secrets_configured": true,
+  "api_status": "active; healthz and score verified via SSH",
+  "public_api_8080_open": true,
+  "dvc_files_pushed": 3,
+  "os_disk_gib": 30,
+  "os_disk_sku": "Standard_LRS",
+  "security_type": "TrustedLaunch"
+}

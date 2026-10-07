@@ -1,0 +1,48 @@
+#cloud-config
+write_files:
+- path: /opt/income-bootstrap.sh
+  permissions: '0700'
+  content: "#!/usr/bin/env bash\n# Execute as root on the newly created Ubuntu VM.\n\
+    set -euo pipefail\nDEPLOY_USER=azureuser\nDEPLOY_HOME=/home/azureuser\nexport\
+    \ DEBIAN_FRONTEND=noninteractive\n# cloud-init write_files can create the home\
+    \ directory before Azure creates the user.\nchown \"$DEPLOY_USER:$DEPLOY_USER\"\
+    \ \"$DEPLOY_HOME\" \"$DEPLOY_HOME/requirements-serve.txt\"\napt-get update -qq\n\
+    apt-get install -y -qq python3-venv curl\nif [ ! -f /swapfile ]; then\n  fallocate\
+    \ -l 1G /swapfile\n  chmod 600 /swapfile\n  mkswap /swapfile\n  swapon /swapfile\n\
+    \  printf '/swapfile none swap sw 0 0\\n' >> /etc/fstab\nfi\nsudo -u \"$DEPLOY_USER\"\
+    \ python3 -m venv \"$DEPLOY_HOME/bootstrap\"\nsudo -u \"$DEPLOY_USER\" \"$DEPLOY_HOME/bootstrap/bin/pip\"\
+    \ install 'uv==0.12.19'\nsudo -u \"$DEPLOY_USER\" env HOME=\"$DEPLOY_HOME\" \\\
+    \n  \"$DEPLOY_HOME/bootstrap/bin/uv\" venv --python 3.11 \"$DEPLOY_HOME/.venv\"\
+    \nsudo -u \"$DEPLOY_USER\" env HOME=\"$DEPLOY_HOME\" UV_LINK_MODE=copy \\\n  \"\
+    $DEPLOY_HOME/bootstrap/bin/uv\" pip install --python \"$DEPLOY_HOME/.venv/bin/python\"\
+    \ \\\n  -r \"$DEPLOY_HOME/requirements-serve.txt\"\ninstall -d -o \"$DEPLOY_USER\"\
+    \ -g \"$DEPLOY_USER\" \"$DEPLOY_HOME/models\" \"$DEPLOY_HOME/src\"\ncat > /etc/systemd/system/income-api.service\
+    \ <<'EOF'\n[Unit]\nDescription=Adult income inference API\nWants=network-online.target\n\
+    After=network-online.target\n\n[Service]\nUser=azureuser\nWorkingDirectory=/home/azureuser\n\
+    EnvironmentFile=/home/azureuser/.env\nEnvironment=OMP_NUM_THREADS=1\nEnvironment=OPENBLAS_NUM_THREADS=1\n\
+    ExecStart=/home/azureuser/.venv/bin/python /home/azureuser/src/serve.py\nRestart=on-failure\n\
+    RestartSec=5\nNoNewPrivileges=true\nPrivateTmp=true\n\n[Install]\nWantedBy=multi-user.target\n\
+    EOF\nsystemctl daemon-reload\nsystemctl enable income-api\nprintf 'VM bootstrap\
+    \ completed; API starts after Azure environment and model are available.\\n'\n"
+- path: /home/azureuser/requirements-serve.txt
+  permissions: '0644'
+  content: '# Python 3.11; keep model serialization dependencies identical to training.
+
+    numpy==1.26.4
+
+    scikit-learn==1.4.2
+
+    pandas==2.2.2
+
+    joblib==1.4.2
+
+    fastapi==0.111.0
+
+    uvicorn==0.29.0
+
+    azure-storage-blob==12.19.1
+
+    '
+runcmd:
+- - bash
+  - /opt/income-bootstrap.sh
